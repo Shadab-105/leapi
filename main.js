@@ -1,8 +1,3 @@
-/* 
- * author: A SRI SAI VENKATESH
- */
-//try {
-
 var safeStringify = require('fast-safe-stringify')
 //var ClientCapability = require('twilio').jwt.ClientCapability;
 //var VoiceResponse = require('twilio').twiml.VoiceResponse;

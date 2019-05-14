@@ -61,6 +61,24 @@ function LoginConfigService(db, util) {
             });
         }
     };
+    this.getUsers = function (request, callback) {
+      var paramsArray = new Array(
+          1,1,0,1,0,0,10
+      );
+      var queryString = util.getQueryString('users_get', paramsArray);
+
+      if (queryString != '') {
+          db.executeQuery(0, queryString, function (err, data) {
+              if (err === false) {
+                  //query successfully inserted
+                  callback(false, { data: data }, 200);
+              } else {
+                  //query insert failed
+                  callback(false, { data: data }, 200);
+              }
+          });
+      }
+  };
 }
 ;
 module.exports = LoginConfigService;

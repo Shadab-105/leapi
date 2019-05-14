@@ -1,6 +1,6 @@
 /*
  *author: Kapil Gundawar
- * 
+ *
  */
 
 var LoginConfigService = require("../services/loginConfigService");
@@ -38,7 +38,7 @@ function LoginConfigController(objCollection) {
         loginConfigService.addUserInsert(req.body, function (err, data, statusCode) {
 
             if (err === false) {
-                // got positive response   
+                // got positive response
                 res.send(responseWrapper.getResponse(err, data, statusCode));
             } else {
                 console.log('did not get proper response for assetListSelect');
@@ -54,7 +54,7 @@ function LoginConfigController(objCollection) {
         loginConfigService.editPassword(req.body, function (err, data, statusCode) {
 
             if (err === false) {
-                // got positive response   
+                // got positive response
                 res.send(responseWrapper.getResponse(err, data, statusCode));
             } else {
                 console.log('did not get proper response for assetListSelect');
@@ -63,6 +63,22 @@ function LoginConfigController(objCollection) {
         });
 
     });
+    app.get('/getUser', function (req, res) {
+      var string = "getUSer - " + JSON.stringify(req.body);
+      objCollection.util.writeLogs(string);
+
+      loginConfigService.getUsers(req.body, function (err, data, statusCode) {
+
+          if (err === false) {
+              // got positive response
+              res.send(responseWrapper.getResponse(err, data, statusCode));
+          } else {
+              console.log('did not get proper response for assetListSelect');
+              res.send(responseWrapper.getResponse(err, data, statusCode));
+          }
+      });
+
+  });
 
 }
 module.exports = LoginConfigController;

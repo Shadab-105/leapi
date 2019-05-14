@@ -16,3 +16,6 @@
 2019-05-14 13:55:28: addUser - {"user_type_id":"`'2'`","first_name":"`'ABC'`","last_name":"`'XYZ'`","gender":"`'M'`","email":"`'abc@xyz.com'`","phone":"`'8123121298'`","country_code":"`'91'`","password":"`'sd'`","location":"`'NULL'`","dept_id":"`'0'`","office_id":"`0`","organization_id":"`1`","user_id":"`0`","email_code":"`'123345'`","phone_code":"`'123345'`"}
 2019-05-14 13:57:9: editPassword - {"user_id":"`'2'`","password":"`'sd'`"}
 2019-05-14 13:57:34: editPassword - {"user_id":"`1`","password":"`sddsd`"}
+2019-05-14 21:2:49: getUSer - {}
+2019-05-14 21:7:24: getUSer - {}
+2019-05-14 21:7:54: getUSer - {}
