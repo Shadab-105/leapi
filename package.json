@@ -1,0 +1,26 @@
+{
+  "name": "node-js-sample",
+  "version": "0.2.0",
+  "description": "A sample Node.js app using Express 4",
+  "main": "main.js",
+  "dependencies": {
+    "aws-sdk": "^2.199.0",
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.13.3",
+    "fast-safe-stringify": "^2.0.3",
+    "moment": "^2.20.1",
+    "mysql": "^2.16.0",
+    "node-geocoder": "^3.22.0",
+    "nodemailer": "^2.7.2",
+    "nodemailer-express-handlebars": "^3.0.0",
+    "nodemailer-smtp-transport": "^2.7.4",
+    "pubnub": "^4.20.1",
+    "twilio": "^3.11.3"
+  },
+  "keywords": [
+    "node",
+    "express"
+  ],
+  "author": "jayanth"
+}
