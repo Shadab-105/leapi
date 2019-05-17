@@ -47,7 +47,7 @@ var executeQuery = function (flag, queryString, callback) {
     switch (flag) {
         case 0:
             conPool = masterDbPool;
-            console.log('master pool is selected');
+            //console.log('master pool is selected');
             break;
         case 1:
             conPool = slave1DbPool;
@@ -69,7 +69,7 @@ var executeQuery = function (flag, queryString, callback) {
                 
                 conn.query(queryString, function (err, rows, fields) {
                     if (!err) {
-                        console.log(queryString);
+                        //console.log(queryString);
                         conn.release();                        
                         callback(false, rows[0]);                        
                         return;

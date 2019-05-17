@@ -1,0 +1,25 @@
+2019-05-17 21:36:24: editPassword - {"user_id":"`1`","password":"`Kapil`"}
+2019-05-17 21:37:11: editPassword - {"user_id":"1","password":"Kapil"}
+2019-05-17 21:37:32: editPassword - {"user_id":"1","password":"Kapil Gundawar"}
+2019-05-17 21:37:41: editPassword - {"user_id":"0","password":"Kapil Gundawar"}
+2019-05-17 21:38:55: addUser - {"user_type_id":"2","first_name":"ABC","last_name":"XYZ","gender":"M","email":"abc@xyz.com","phone":"8123121298'","country_code":"91","password":"sd","location":"NULL","dept_id":"0","office_id":"0","organization_id":"1","user_id":"0","email_code":"123345","phone_code":"123345"}
+2019-05-17 21:40:57: addUser - {"user_type_id":"2","first_name":"ABC","last_name":"XYZ","gender":"M","email":"abc@xyz.com","phone":"8123121298","country_code":"91","password":"sd","location":"NULL","dept_id":"0","office_id":"0","organization_id":"1","user_id":"0","email_code":"123345","phone_code":"123345"}
+2019-05-17 21:41:34: addUser - {"user_type_id":"2","first_name":"ABC","last_name":"XYZ","gender":"M","email":"abc@xyz.com","phone":"8123121298","country_code":"91","password":"sd","location":"'NULL'","dept_id":"0","office_id":"0","organization_id":"1","user_id":"0","email_code":"123345","phone_code":"123345"}
+2019-05-17 21:41:47: addUser - {"user_type_id":"2","first_name":"ABC","last_name":"XYZ","gender":"M","email":"abc@xyz.com","phone":"8123121298","country_code":"91","password":"sd","location":"{}","dept_id":"0","office_id":"0","organization_id":"1","user_id":"0","email_code":"123345","phone_code":"123345"}
+2019-05-17 22:49:7: addUser - {"user_type_id":"2","first_name":"ABC","last_name":"XYZ","gender":"M","email":"abc@xyz.com","phone":"8123121290","country_code":"91","password":"sd","location":"{}","dept_id":"0","office_id":"0","organization_id":"1","user_id":"0","email_code":"123345","phone_code":"123345"}
+2019-05-17 22:49:50: editPassword - {"user_id":"0","password":"Kapil Gundawar1"}
+2019-05-17 23:9:15: /user/edit/password - {"user_id":"0","password":"Kapil Gundawar12"}
+2019-05-17 23:9:27: /user/edit/password - {"user_id":"0","password":"Kapil Gundawar123"}
+2019-05-17 23:9:34: /user/edit/password - {"user_id":"0","password":"Kapil Gundawar1234"}
+2019-05-17 23:14:28: /user/list - {"user_id":"1","search_string":"1","flag":"1","sort_flag":"1","start":"0","limit":"10"}
+2019-05-17 23:14:58: /user/list - {"user_id":"0","search_string":"1","flag":"1","sort_flag":"1","start":"0","limit":"10"}
+2019-05-17 23:15:25: /user/list - {"user_id":"0","search_string":"1","flag":"0","sort_flag":"1","start":"0","limit":"10"}
+2019-05-17 23:15:37: /user/list - {"user_id":"0","search_string":"\"\"","flag":"1","sort_flag":"1","start":"0","limit":"10"}
+2019-05-17 23:15:45: /user/list - {"user_id":"0","search_string":"1","flag":"1","sort_flag":"1","start":"0","limit":"10"}
+2019-05-17 23:29:21: /user/list - {"user_id":"1","search_string":"1","flag":"1","sort_flag":"1","start":"0","limit":"10"}
+2019-05-17 23:31:4: /user/list - {"user_id":"1","search_string":"1","flag":"1","sort_flag":"1","start":"0","limit":"10","organization_id":"1"}
+2019-05-17 23:31:42: office/add - {"organization_id":"1","office_type_id":"1","name":"M&M","office_country_code":"91","phone":"9908217751","address":"Hyderabad","location":"{}","fax":"1234","info":"{}","user_id":"0"}
+2019-05-17 23:42:7: /office/edit - {"organization_id":"1","office_type_id":"1","name":"J&J","office_country_code":"91","phone":"9908217751","address":"Hyderabad","location":"{}","fax":"1234","info":"{}","user_id":"0","office_id":"1"}
+2019-05-17 23:44:24: office/list - {"organization_id":"1","office_id":"1","search_string":"J&J","flag":"1","sort_flag":"0","start":"0","limit":"10"}
+2019-05-17 0:2:43: /department/add - {"organization_id":"1","office_id":"1","dept_type_id":"1","name":"HR","user_id":"1"}
+2019-05-17 0:3:56: office/list - {"organization_id":"1","dept_id":"1","search_string":"J&J","flag":"1","sort_flag":"0","start":"0","limit":"10"}

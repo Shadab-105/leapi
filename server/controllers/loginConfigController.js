@@ -20,19 +20,15 @@ function LoginConfigController(objCollection) {
     var loginConfigService = new LoginConfigService(objCollection.db, objCollection.util);
 
     app.post('/apiData', function (req, res) {
-//        res.render('api', {routes: app._router.stack});
+        //        res.render('api', {routes: app._router.stack});
         res.send(responseWrapper.getResponse(false, app._router.stack, 200));
     });
 
     /*
-     * Get Particular Resource Details
-     * Get the current employee desk asset status
-     * Get the current employee desk asset color preference
-     * Get the current customer unique id of the employee asset
-     * @param organization_id, asset_id
+     * Adds User
      */
-    app.post('/addUser', function (req, res) {
-        var string = "addUser - " + JSON.stringify(req.body);
+    app.post('/user/add', function (req, res) {
+        var string = "/user/add - " + JSON.stringify(req.body);
         objCollection.util.writeLogs(string);
 
         loginConfigService.addUserInsert(req.body, function (err, data, statusCode) {
@@ -41,14 +37,16 @@ function LoginConfigController(objCollection) {
                 // got positive response
                 res.send(responseWrapper.getResponse(err, data, statusCode));
             } else {
-                console.log('did not get proper response for assetListSelect');
+                console.log('did not get proper response for /user/add');
                 res.send(responseWrapper.getResponse(err, data, statusCode));
             }
         });
 
     });
-    app.post('/editPassword', function (req, res) {
-        var string = "editPassword - " + JSON.stringify(req.body);
+
+   
+    app.post('/user/edit/password', function (req, res) {
+        var string = "/user/edit/password - " + JSON.stringify(req.body);
         objCollection.util.writeLogs(string);
 
         loginConfigService.editPassword(req.body, function (err, data, statusCode) {
@@ -57,28 +55,28 @@ function LoginConfigController(objCollection) {
                 // got positive response
                 res.send(responseWrapper.getResponse(err, data, statusCode));
             } else {
-                console.log('did not get proper response for assetListSelect');
+                console.log('did not get proper response for /user/edit/password');
                 res.send(responseWrapper.getResponse(err, data, statusCode));
             }
         });
 
     });
-    app.get('/getUser', function (req, res) {
-      var string = "getUSer - " + JSON.stringify(req.body);
-      objCollection.util.writeLogs(string);
+    app.post('/user/list', function (req, res) {
+        var string = "/user/list - " + JSON.stringify(req.body);
+        objCollection.util.writeLogs(string);
 
-      loginConfigService.getUsers(req.body, function (err, data, statusCode) {
+        loginConfigService.getUsers(req.body, function (err, data, statusCode) {
 
-          if (err === false) {
-              // got positive response
-              res.send(responseWrapper.getResponse(err, data, statusCode));
-          } else {
-              console.log('did not get proper response for assetListSelect');
-              res.send(responseWrapper.getResponse(err, data, statusCode));
-          }
-      });
+            if (err === false) {
+                // got positive response
+                res.send(responseWrapper.getResponse(err, data, statusCode));
+            } else {
+                console.log('did not get proper response for /user/list');
+                res.send(responseWrapper.getResponse(err, data, statusCode));
+            }
+        });
 
-  });
+    });
 
 }
 module.exports = LoginConfigController;
