@@ -9,7 +9,14 @@ var fs = require('fs'); // File commands
 var PubNub = require('pubnub');
 var NodeGeocoder = require('node-geocoder');
 var twilio = require('twilio');
+// SendInBlue
+const SibApiV3Sdk = require('sib-api-v3-sdk');
+const defaultClient = SibApiV3Sdk.ApiClient.instance;
+// Configure API key authorization: api-key
+const apiKey = defaultClient.authentications['api-key'];
+apiKey.apiKey = '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';
 
+const apiInstance = new SibApiV3Sdk.SMTPApi();
 function Util() {
 
     this.isAValidPhoneNumber = function (number) {
@@ -881,6 +888,43 @@ function Util() {
             }
         });
         return;
+    };
+
+
+    // SendInBlue, htmlTemplate is sent as base64 encoded
+    this.sendEmailV4 = function (request, email, subject, text, base64EncodedHtmlTemplate, callback) {
+        console.log('email : ', email);
+        console.log('subject : ', subject);
+        console.log('text : ', text);
+
+        let buff = new Buffer(base64EncodedHtmlTemplate, 'base64');
+        let htmlTemplate = buff.toString('ascii');
+
+        // SendSmtpEmail | Values to send a transactional email
+        var sendSmtpEmail = new SibApiV3Sdk.SendSmtpEmail();
+        sendSmtpEmail.to = [{
+            "name": request.email_receiver_name || undefined,
+            "email": email
+        }];
+        sendSmtpEmail.sender = {
+            "name": request.email_sender_name || undefined,
+            "email": request.email_sender
+        };
+        sendSmtpEmail.textContent = text;
+        sendSmtpEmail.htmlContent = htmlTemplate;
+        sendSmtpEmail.subject = subject;
+        sendSmtpEmail.headers = {
+            "x-mailin-custom": "Levitating Elephant"
+        };
+        sendSmtpEmail.tags = ["live"];
+
+        apiInstance.sendTransacEmail(sendSmtpEmail)
+            .then(function (data) {
+                console.log('API called successfully. Returned data: ', data);
+                return callback(false, data);
+            }, function (error) {
+                return callback(true, error);
+            });
     };
 
     this.getRedableFormatLogDate = function (timeString, type) {
