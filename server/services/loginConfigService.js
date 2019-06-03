@@ -166,6 +166,7 @@ function LoginConfigService(db, util) {
     var paramsArray = new Array(
       request.organization_id,
       request.user_id,
+      request.user_type_id,
       request.search_string,
       request.flag,
       request.sort_flag,
