@@ -50,7 +50,7 @@ function FormsConfigService(db, util) {
                   //query successfully inserted
                   callback(false, err, 200);
               } else {
-                  //query insert failed
+                  //query list failed
                   callback(false, { data: data }, 200);
               }
           });
@@ -71,7 +71,7 @@ function FormsConfigService(db, util) {
       db.executeQuery(0, queryString, function (err, data) {
           if (err === false) {
               //query successfully inserted
-              callback(false, { data: data }, 200);
+              callback(false, err, 200);
               //return {data:data}
           } else {
               //query insert failed
