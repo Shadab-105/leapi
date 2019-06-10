@@ -52,16 +52,34 @@ function FormsConfigController(objCollection) {
 
     });
 
+    app.post('/forms/fields/list', function (req, res) {
+      var string = "/forms/fields/list - " + JSON.stringify(req.body);
+      objCollection.util.writeLogs(string);
+      formsConfigService.getFormsFields(req.body, function (err, data, statusCode) {
+        if (err === false) {
+            // got positive response
+            res.send(responseWrapper.getResponse(err, data, statusCode));
+        } else {
+            console.log('did not get proper response for office/add');
+            res.send(responseWrapper.getResponse(err, data, statusCode));
+        }
+    });
+
+  });
+
     // Service for inserting form field definitions
     app.post('/forms/field/definition/insert', async function (req, res) {
 
-      const [err, updateStatus] = await formsConfigService.formFieldDefinitionInsert(req.body);
-      if (!err) {
-          res.send(responseWrapper.getResponse({}, updateStatus, 200));
-      } else {
-          console.log("Error: ", err);
-          res.send(responseWrapper.getResponse(err, updateStatus, -9999));
-      }
+      var string = "forms/fieldinsert - " + JSON.stringify(req.body);
+        objCollection.util.writeLogs(string);
+
+        const [err, updateStatus] = await formsConfigService.formFieldDefinitionInsert(req.body);
+        if (!err) {
+            res.send(responseWrapper.getResponse({}, updateStatus, 200, req.body));
+        } else {
+            console.log("Error: ", err);
+            res.send(responseWrapper.getResponse(err, updateStatus, -9999, req.body));
+        }
   });
 }
 module.exports = FormsConfigController;
