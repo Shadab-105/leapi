@@ -64,5 +64,34 @@ function OfficeConfigController(objCollection) {
         });
 
     });
+    app.post('/forms/list', function (req, res) {
+      var string = "forms/list - " + JSON.stringify(req.body);
+      objCollection.util.writeLogs(string);
+      officeConfigService.getFormsList(req.body, function (err, data, statusCode) {
+          if (err === false) {
+              // got positive response
+              res.send(responseWrapper.getResponse(err, data, statusCode));
+          } else {
+              console.log('did not get proper response for office/list');
+              res.send(responseWrapper.getResponse(err, data, statusCode));
+          }
+      });
+
+  });
+  app.post('/forms/field/list', function (req, res) {
+    var string = "forms/list - " + JSON.stringify(req.body);
+    objCollection.util.writeLogs(string);
+    officeConfigService.getFormsFieldList(req.body, function (err, data, statusCode) {
+        if (err === false) {
+            // got positive response
+            res.send(responseWrapper.getResponse(err, data, statusCode));
+        } else {
+            console.log('did not get proper response for office/list');
+            res.send(responseWrapper.getResponse(err, data, statusCode));
+        }
+    });
+
+});
+
 }
 module.exports = OfficeConfigController;

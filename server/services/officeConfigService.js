@@ -83,6 +83,53 @@ function OfficeConfigService(db, util) {
             });
         }
     };
+    this.getFormsList = function (request, callback) {
+      var paramsArray = new Array(
+        request.organization_id,
+        request.form_id,
+        request.search_string,
+        request.flag,
+        request.sort_flag,
+        request.start,
+        request.limit,
+    );
+      var queryString = util.getQueryString('forms_get', paramsArray);
+
+      if (queryString != '') {
+          db.executeQuery(0, queryString, function (err, data) {
+              if (err === false) {
+                  //query successfully inserted
+                  callback(false, { data: data }, 200);
+              } else {
+                  //query insert failed
+                  callback(false, { data: data }, 200);
+              }
+          });
+      }
+  };
+  this.getFormsFieldList = function (request, callback) {
+    var paramsArray = new Array(
+      request.organization_id,
+      request.form_id,
+      request.flag,
+      request.sort_flag,
+      request.start,
+      request.limit,
+  );
+    var queryString = util.getQueryString('form_fields_get', paramsArray);
+
+    if (queryString != '') {
+        db.executeQuery(0, queryString, function (err, data) {
+            if (err === false) {
+                //query successfully inserted
+                callback(false, { data: data }, 200);
+            } else {
+                //query insert failed
+                callback(false, { data: data }, 200);
+            }
+        });
+    }
+};
 }
 ;
 module.exports = OfficeConfigService;

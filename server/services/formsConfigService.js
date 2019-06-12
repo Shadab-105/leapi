@@ -102,7 +102,12 @@ function FormsConfigService(db, util) {
         let fieldMandatoryEnabled = formField.is_required == true ? 1 : 0;
         let nextFieldId = (typeof formField.field_id == '') ? 0 : Number(formField.field_id);
         let fieldSequenceId = 1;
-        let fieldJson = (typeof formField.options == 'undefined' || formField.options=="") ? '{}' : JSON.stringify(formField.options);
+        let fieldOptions = {
+          options: formField.options,
+          validations: formField.validations
+        }
+        let fieldJson = JSON.stringify(fieldOptions)
+        //let fieldJson = (typeof formField.options == 'undefined' || formField.options=="") ? '{}' : JSON.stringify(formField.options);
 
         //let dataTypeCategoryId = Number(formField.dataTypeCategoryId);
 

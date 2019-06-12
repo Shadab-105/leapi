@@ -37,7 +37,7 @@ function FormsConfigController(objCollection) {
 
     });
 
-    app.post('/forms/list', function (req, res) {
+    /* app.post('/forms/list', function (req, res) {
         var string = "forms/list - " + JSON.stringify(req.body);
         objCollection.util.writeLogs(string);
         formsConfigService.getForms(req.body, function (err, data, statusCode) {
@@ -65,7 +65,7 @@ function FormsConfigController(objCollection) {
         }
     });
 
-  });
+  }); */
 
     // Service for inserting form field definitions
     app.post('/forms/field/definition/insert', async function (req, res) {
