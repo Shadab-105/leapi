@@ -37,6 +37,21 @@ function FormsConfigController(objCollection) {
 
     });
 
+    app.post('/forms/edit', function (req, res) {
+      var string = "forms/edit - " + JSON.stringify(req.body);
+      objCollection.util.writeLogs(string);
+      formsConfigService.updateForm(req.body, function (err, data, statusCode) {
+          if (err === false) {
+              // got positive response
+              res.send(responseWrapper.getResponse(err, data, statusCode));
+          } else {
+              console.log('did not get proper response for froms/update');
+              res.send(responseWrapper.getResponse(err, data, statusCode));
+          }
+      });
+
+  });
+
     /* app.post('/forms/list', function (req, res) {
         var string = "forms/list - " + JSON.stringify(req.body);
         objCollection.util.writeLogs(string);
@@ -81,5 +96,19 @@ function FormsConfigController(objCollection) {
             res.send(responseWrapper.getResponse(err, updateStatus, -9999, req.body));
         }
   });
+  // Service for update form field definitions
+  app.post('/forms/field/definition/update', async function (req, res) {
+
+    var string = "forms/fieldUpdate - " + JSON.stringify(req.body);
+      objCollection.util.writeLogs(string);
+
+      const [err, updateStatus] = await formsConfigService.formFieldDefinitionUpdate(req.body);
+      if (!err) {
+          res.send(responseWrapper.getResponse({}, updateStatus, 200, req.body));
+      } else {
+          console.log("Error: ", err);
+          res.send(responseWrapper.getResponse(err, updateStatus, -9999, req.body));
+      }
+});
 }
 module.exports = FormsConfigController;
